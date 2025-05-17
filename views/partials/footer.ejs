@@ -1,0 +1,226 @@
+<!-- Tambahkan ini di <head> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+<!-- Footer -->
+<footer class="footer-container">
+  <div class="footer-content">
+    
+    <!-- Logo dan Deskripsi -->
+    <div class="footer-brand-section">
+      <a href="/" class="logo-link">
+        <img src="/images/utama/logo.png" alt="Logo Posyandu" class="footer-logo">
+        <h2 class="footer-brand cinzel-font">e-Posyandu</h2>
+      </a>
+      <p class="footer-desc">Sistem informasi digital untuk pemantauan tumbuh kembang balita dan layanan ibu & anak secara terpadu.</p>
+    </div>
+
+    <!-- Navigasi Cepat -->
+    <div class="footer-nav-section">
+      <h3 class="footer-title">Navigasi</h3>
+      <ul class="footer-nav">
+        <li><a href="/anak">Data Anak</a></li>
+        <li><a href="/ibu">Data Ibu</a></li>
+        <li><a href="/imunisasi">Imunisasi</a></li>
+        <li><a href="/gizi">Pertumbuhan Gizi</a></li>
+      </ul>
+    </div>
+
+    <!-- Sosial Media -->
+    <div class="footer-social-section">
+      <h3 class="footer-title">Ikuti Kami</h3>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <!-- Kontak -->
+    <div class="footer-contact-section">
+      <h3 class="footer-title">Kontak Posyandu</h3>
+      <p>📍 Jl. Sehat No.10, Kec. Bahagia</p>
+      <p>📞 (031) 555-8899</p>
+      <p>✉️ posyandu@desa.id</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 e-Posyandu. Bersama tumbuh sehat dan cerdas.
+  </div>
+</footer>
+
+<!-- CSS -->
+<style>
+ .footer-container {
+  background-color: var(--dark-blue);
+  padding: 40px 60px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #f3f3f3;
+  border-top: 4px solid #3a6ea5;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-brand-section,
+.footer-nav-section,
+.footer-social-section,
+.footer-contact-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.footer-logo {
+  width: 60px;
+  filter: drop-shadow(0 0 4px #5e9dd5);
+}
+
+.footer-brand {
+  margin: 0;
+  font-size: 22px;
+  color: #f8f8f8;
+  text-shadow: 1px 1px 2px #c2dbf2;
+}
+
+.cinzel-font {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+}
+
+.footer-desc {
+  margin-top: 0;
+  font-size: 14px;
+  color: #e1f0fa;
+  max-width: 350px;
+  line-height: 1.4;
+}
+
+.footer-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: 'Cinzel', serif;
+}
+
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li {
+  margin-bottom: 8px;
+  text-align: left;
+  margin-left: 100px;
+  position: relative;
+  font-weight: 580;
+  font-family: 'Cinzel', serif;
+  color: #f7f7f7;
+  filter: drop-shadow(0 0 6px #a9d1ff);
+}
+
+.footer-nav a {
+  color: #fdfdfd;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 600;
+}
+
+.footer-nav a:hover {
+  color: #2a74b7;
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #145a8d;
+  transition: color 0.3s, transform 0.3s;
+  font-family: 'Cinzel', serif;
+  filter: drop-shadow(0 0 1px #6da8db);
+}
+
+.social-icons a:hover {
+  color: #e9eaeb;
+  transform: scale(1.25) rotate(-10deg);
+  filter: drop-shadow(0 0 6px #a9d1ff);
+}
+
+/* Ganti icon fontawesome ke versi kuno */
+.social-icons a .fab {
+  font-weight: 900;
+  filter: drop-shadow(0 0 6px #a9d1ff);
+}
+
+/* Kontak */
+.footer-contact-section p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #d7e9f9;
+  text-align: left;
+  margin-left: 55px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #0b3d66;
+  font-weight: 600;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 3px #a3c1e9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand-section,
+  .footer-nav-section,
+  .footer-social-section,
+  .footer-contact-section {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .footer-nav li,
+  .footer-contact-section p {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .logo-link {
+    justify-content: center;
+  }
+}
+
+</style>

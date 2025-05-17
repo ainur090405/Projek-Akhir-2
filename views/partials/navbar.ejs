@@ -1,0 +1,272 @@
+<div class="navbar">
+  <div class="logo">
+    <a href="/">
+      <img src="/images/utama/logo.png" alt="e-Posyandu Logo" />
+    </a>
+    <span class="brand-name">
+      <span class="meduro">e-</span><span class="pride">Posyandu</span>
+    </span>
+  </div>
+
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/anak">Data Anak</a>
+    <a href="/ibu">Data Ibu</a>
+    <a href="/imunisasi">Imunisasi</a>
+    <a href="/gizi">Pertumbuhan Gizi</a>
+    <% if (session && session.role === 'admin') { %>
+      <a href="/master">Master</a>
+    <% } %>
+
+    <form action="/search" method="GET" class="search-form">
+      <input type="text" name="q" placeholder="Cari data..." required />
+      <button type="submit">
+        <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
+      </button>
+    </form>
+  </div>
+
+  <% if (session && session.isLoggedIn) { %>
+    <div class="auth-section">
+      <span class="username">Hi, <%= session.username %></span>
+      <a href="/logout" class="logout-btn">Logout <img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png" alt="Logout Icon" /></a>
+    </div>
+  <% } else { %>
+    <div class="login-link">
+      <a href="/login">Login ⏎</a>
+    </div>
+  <% } %>
+</div>
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.classList.toggle('active');
+  }
+</script>
+
+<style>:root {
+  --dark-blue: #1a3f6b;
+  --primary-blue: #4a90e2;
+  --light-blue: #a8c6f7;
+  --accent-blue: #6bb1ff;
+  --text-light: #e6f0ff;
+  --text-muted: #bdd7fb;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark-blue);
+  padding: 14px 28px;
+  flex-wrap: wrap;
+  font-family: 'Times New Roman', Times, serif; /* ⬅️ diubah */
+  color: var(--text-light);
+  box-shadow: 0 4px 10px rgba(26, 63, 107, 0.5);
+  border-bottom: 3px solid var(--primary-blue);
+  position: relative;
+  z-index: 99;
+}
+
+/* OPTIONAL: kamu juga bisa tambahkan ini agar seluruh teks ikut berubah */
+body {
+  font-family: 'Times New Roman', Times, serif;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 46px;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.brand-name .meduro {
+  color: var(--light-blue);
+  font-family:'Cinzel', serif;
+}
+
+.brand-name .pride {
+  color: var(--text-light);
+  font-family:'Cinzel', serif;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  font-size: 24px;
+  color: var(--light-blue);
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.logout-btn {
+  color: var(--text-light);
+  text-decoration: none;
+  background-color: var(--primary-blue);
+  padding: 10px 12px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  gap: 8px;
+}
+
+.nav-links a,
+.login-link a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background-color: var(--primary-blue);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.nav-links a:hover,
+.logout-btn:hover,
+.login-link a:hover {
+  background-color: var(--accent-blue);
+  transform: scale(1.05);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: #f0f8ff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  gap: 10px;
+}
+
+.search-form input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  flex: 1;
+}
+
+.search-form input::placeholder {
+  color: #99b9f3;
+}
+
+.search-form button {
+  background-color: var(--primary-blue);
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: var(--accent-blue);
+}
+
+.search-form button img {
+  width: 18px;
+  height: 18px;
+}
+
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.login-link img,
+.logout-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.username {
+  color: var(--text-muted);
+  font-weight: bold;
+}
+
+@media (max-width: 769px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .logo img {
+    margin-left: 115px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    margin-right: 30px;
+    margin-top: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a,
+  .search-form,
+  .login-link a,
+  .logout-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .search-form {
+    margin-left: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .login-link {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-left: 400px;
+  }
+
+  .auth-section,
+  .logout-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .search-form input {
+    width: 70%;
+  }
+
+  .search-form button {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+</style>

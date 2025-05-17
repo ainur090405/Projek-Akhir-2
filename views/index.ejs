@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <% if (success) { %>
+      <div class="success"><%= success %></div>
+    <% } %>
+
+    <div class="marquee-container">
+      <div class="marquee-text">
+        Selamat datang di e-Posyandu! Mewujudkan generasi sehat sejak dini bersama layanan terpadu ibu dan anak.
+      </div>
+    </div>
+
+    <section class="hero-section">
+      <div class="hero-content">
+        <small>Pelayanan Kesehatan Ibu & Anak</small>
+        <h1>Selamat Datang di e-Posyandu</h1>
+        <p>
+          Sistem informasi untuk mendukung pelayanan kesehatan anak dan balita,
+          imunisasi, pertumbuhan, serta peran aktif orang tua dalam menjaga kesehatan buah hati.
+        </p>
+        <div class="cta-buttons">
+          <a href="/anak" class="btn btn-primary">Data Anak</a>
+          <a href="/imunisasi" class="btn btn-secondary">Data Imunisasi</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="/images/halaman/home.png" alt="Ilustrasi Posyandu" />
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>Layanan e-Posyandu</h2>
+      <p>
+        Dapatkan informasi dan dokumentasi lengkap tentang kesehatan anak, pertumbuhan, imunisasi, dan data orang tua di satu tempat.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3>Data Anak</h3>
+          <p>Pendataan lengkap dan riwayat kesehatan anak & balita.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Imunisasi Terjadwal</h3>
+          <p>Monitoring jadwal dan jenis imunisasi setiap anak.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Pertumbuhan Gizi</h3>
+          <p>Catatan tinggi badan, berat badan, dan status gizi.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Peran Orang Tua</h3>
+          <p>Keterlibatan aktif orang tua dalam menjaga tumbuh kembang anak.</p>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const alertBox = document.querySelector(".success");
+        if (alertBox) {
+          setTimeout(() => {
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 500);
+          }, 3000);
+        }
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const section = document.querySelector(".hero-section");
+        section.style.opacity = 0;
+        section.style.transform = "translateY(40px)";
+        setTimeout(() => {
+          section.style.transition = "all 0.8s ease";
+          section.style.opacity = 1;
+          section.style.transform = "translateY(0)";
+        }, 300);
+      });
+    </script>
+
+<section class="edukasi-section">
+  <h2>Edukasi Kesehatan Ibu & Anak</h2>
+  <p class="edukasi-subtitle">
+    Temukan berbagai artikel dan tips penting untuk menjaga kesehatan ibu dan anak secara optimal.
+  </p>
+  <div class="edukasi-cards">
+    <div class="edukasi-card">
+      <h3>Gizi Seimbang Anak</h3>
+      <p>Tips memberi nutrisi tepat untuk tumbuh kembang anak usia dini.</p>
+      <a href="/edukasi/gizi" class="btn-edukasi">Baca Selengkapnya</a>
+    </div>
+    <div class="edukasi-card">
+      <h3>Imunisasi Tepat Waktu</h3>
+      <p>Panduan jenis-jenis imunisasi dan waktu pelaksanaannya.</p>
+      <a href="/edukasi/imunisasi" class="btn-edukasi">Pelajari</a>
+    </div>
+    <div class="edukasi-card">
+      <h3>Kesehatan Ibu</h3>
+      <p>Perawatan dan pola hidup sehat bagi ibu hamil dan pasca melahirkan.</p>
+      <a href="/edukasi/ibu" class="btn-edukasi">Lihat Tips</a>
+    </div>
+  </div>
+</section>
+<%- include('partials/footer') %>
+</body>
+</html>

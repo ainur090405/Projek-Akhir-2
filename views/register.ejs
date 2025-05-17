@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/stylesheets/logres.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="bg-light d-flex align-items-center justify-content-center vh-100">
+    <div class="container">
+      <!-- Form pendaftaran -->
+      <div class="form-container animate-in mx-auto" style="max-width: 420px;">
+        <h2 class="mb-4 text-center">Register</h2>
+
+        <% if (success) { %>
+          <div class="alert alert-success"><%= success %></div>
+        <% } %>
+
+        <% if (error) { %>
+          <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
+        <form action="/register" method="POST" novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              class="form-control"
+              required
+              oninvalid="this.setCustomValidity('Emailnya belum kamu isi loh!!')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              id="username"
+              type="text"
+              name="username"
+              class="form-control"
+              required
+              oninvalid="this.setCustomValidity('Usernamenya belum kamu isi loh!!')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              class="form-control"
+              required
+              oninvalid="this.setCustomValidity('Passwordnya belum kamu isi loh!!')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Daftar</button>
+        </form>
+
+        <p class="text-center mt-3">
+          Sudah punya akun? <a href="/login">Login</a>
+        </p>
+      </div>
+
+      <div class="toggle-container mt-4 text-center">
+        <div class="glow-box p-3 rounded">
+          <h1 id="typing-text" class="h5 fw-bold"></h1>
+          <p id="fade-text">Silakan daftar untuk mengetahui dan menjelajahi hal baru ! 🎉 </p>
+          <div class="animated-border mt-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/javascripts/logres.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
