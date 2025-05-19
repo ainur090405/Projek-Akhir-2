@@ -11,7 +11,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users')
 var logresRouter = require('./routes/logres').router;
 var masterRouter = require('./routes/master');
-//var objekRouter = require('./routes/objek');
+//var mobilRouter = require('./routes/mobil');
+var objekRouter = require('./routes/objek');
 var app = express();
 
 // view engine setup
@@ -40,8 +41,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/', logresRouter);
 app.use('/master', masterRouter);
-//app.use('/objek', objekRouter);
-
+app.use('/objek', objekRouter);
+//app.use('/data_anak', data_anakRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

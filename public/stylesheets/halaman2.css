@@ -1,0 +1,287 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('/images/utama/index.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.carousel-wrapper {
+  background-color: #e0f2fe; /* biru muda */
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+  margin: 33px auto 15px auto;
+  animation: fadeInUp 0.7s ease;
+  margin-bottom: 15px;
+  max-width: 1000px;
+  width: 95%;
+}
+
+.carousel-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1e3a8a; /* biru tua */
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 240px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.08); /* biru gelap */
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  animation: fadeIn 0.6s ease;
+  background: #ffffff;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+}
+
+.carousel-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15);
+}
+
+.carousel-image-wrapper {
+  overflow: hidden;
+  height: 140px;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.carousel-item:hover .carousel-img {
+  transform: scale(1.05);
+}
+
+.carousel-content {
+  padding: 12px 15px;
+}
+
+.carousel-heading {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #1e40af;
+}
+
+.carousel-meta {
+  font-size: 13px;
+  color: #3b82f6; /* biru medium */
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.carousel-description {
+  font-size: 13px;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+}
+
+.carousel-link {
+  font-size: 13px;
+  color: #2563eb; /* biru terang */
+  text-decoration: none;
+}
+
+/* Carousel buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 2px 6px rgba(30, 58, 138, 0.2);
+  z-index: 10;
+}
+
+.carousel-left {
+  left: 10px;
+}
+
+.carousel-right {
+  right: 10px;
+}
+
+.carousel-wrapper:hover .carousel-button {
+  display: block;
+}
+
+/* Animations */
+.animate-card {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlideIn 0.6s ease forwards;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.mobil-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding-top: 32px;
+}
+
+/* Kartu mobil dengan tema biru */
+.mobil-card {
+  width: 280px;
+  background: rgba(240, 248, 255, 0.95); /* AliceBlue */
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.1);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(4px);
+}
+
+.mobil-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(30, 58, 138, 0.18);
+}
+
+.mobil-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.mobil-card:hover .mobil-img {
+  transform: scale(1.05);
+}
+
+.mobil-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobil-nama {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.mobil-nama:hover {
+  color: #2563eb;
+}
+
+.mobil-kategori {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #3b82f6;
+}
+
+.mobil-deskripsi {
+  font-size: 0.95rem;
+  color: #1e3a8a;
+  line-height: 1.4;
+  margin-top: 0;
+}
+
+.mobil-link {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.mobil-link:hover {
+  text-decoration: underline;
+}
+
+/* Tombol tampilkan semua */
+.tampilkan-semua-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.tampilkan-semua-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #2563eb; /* biru terang */
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(30, 58, 138, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.tampilkan-semua-btn:hover {
+  background-color: #1e40af; /* biru tua */
+  transform: scale(1.1);
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

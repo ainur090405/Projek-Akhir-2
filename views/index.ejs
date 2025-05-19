@@ -12,53 +12,53 @@
 
     <div class="marquee-container">
       <div class="marquee-text">
-        Selamat datang di e-Posyandu! Mewujudkan generasi sehat sejak dini bersama layanan terpadu ibu dan anak.
+        Selamat datang di MeduroRental! Solusi terbaik sewa mobil harian, mingguan, hingga bulanan dengan armada terlengkap.
       </div>
     </div>
 
     <section class="hero-section">
       <div class="hero-content">
-        <small>Pelayanan Kesehatan Ibu & Anak</small>
-        <h1>Selamat Datang di e-Posyandu</h1>
+        <small>Layanan Sewa Mobil Terpercaya</small>
+        <h1>Selamat Datang di MeduroRental</h1>
         <p>
-          Sistem informasi untuk mendukung pelayanan kesehatan anak dan balita,
-          imunisasi, pertumbuhan, serta peran aktif orang tua dalam menjaga kesehatan buah hati.
+          Sistem informasi rental mobil yang memudahkan Anda dalam memilih kendaraan, melihat jadwal ketersediaan, dan melakukan pemesanan dengan cepat dan aman.
         </p>
         <div class="cta-buttons">
-          <a href="/anak" class="btn btn-primary">Data Anak</a>
-          <a href="/imunisasi" class="btn btn-secondary">Data Imunisasi</a>
+          <a href="/mobil" class="btn btn-primary">Lihat Mobil</a>
+          <a href="/paket" class="btn btn-secondary">Paket Sewa</a>
         </div>
       </div>
       <div class="hero-image">
-        <img src="/images/halaman/home.png" alt="Ilustrasi Posyandu" />
+        <img src="/images/halaman/home.jpg" alt="Ilustrasi Rental Mobil" />
       </div>
     </section>
 
     <section class="info-section">
-      <h2>Layanan e-Posyandu</h2>
+      <h2>Layanan MeduroRental</h2>
       <p>
-        Dapatkan informasi dan dokumentasi lengkap tentang kesehatan anak, pertumbuhan, imunisasi, dan data orang tua di satu tempat.
+        Dapatkan informasi lengkap mengenai armada mobil, sopir profesional, harga paket sewa, serta kemudahan dalam proses booking dan pemantauan pemakaian kendaraan.
       </p>
 
       <div class="features-grid">
         <div class="feature-item">
-          <h3>Data Anak</h3>
-          <p>Pendataan lengkap dan riwayat kesehatan anak & balita.</p>
+          <h3>Armada Mobil Lengkap</h3>
+          <p>Beragam pilihan mobil dari city car hingga kendaraan keluarga besar.</p>
         </div>
         <div class="feature-item">
-          <h3>Imunisasi Terjadwal</h3>
-          <p>Monitoring jadwal dan jenis imunisasi setiap anak.</p>
+          <h3>Driver Profesional</h3>
+          <p>Layanan sopir berpengalaman dan ramah untuk kenyamanan perjalanan Anda.</p>
         </div>
         <div class="feature-item">
-          <h3>Pertumbuhan Gizi</h3>
-          <p>Catatan tinggi badan, berat badan, dan status gizi.</p>
+          <h3>Paket Sewa Fleksibel</h3>
+          <p>Pilihan sewa harian, mingguan, hingga bulanan sesuai kebutuhan Anda.</p>
         </div>
         <div class="feature-item">
-          <h3>Peran Orang Tua</h3>
-          <p>Keterlibatan aktif orang tua dalam menjaga tumbuh kembang anak.</p>
+          <h3>Pemesanan Mudah</h3>
+          <p>Proses booking cepat dan transparan langsung melalui sistem kami.</p>
         </div>
       </div>
     </section>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const alertBox = document.querySelector(".success");
@@ -70,41 +70,49 @@
         }
       });
 
-      window.addEventListener("DOMContentLoaded", () => {
-        const section = document.querySelector(".hero-section");
-        section.style.opacity = 0;
-        section.style.transform = "translateY(40px)";
-        setTimeout(() => {
-          section.style.transition = "all 0.8s ease";
-          section.style.opacity = 1;
-          section.style.transform = "translateY(0)";
-        }, 300);
-      });
+      document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show-hero");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const heroSection = document.querySelector(".hero-section");
+  if (heroSection) {
+    heroSection.classList.add("hide-hero");
+    observer.observe(heroSection);
+  }
+});
+
     </script>
 
-<section class="edukasi-section">
-  <h2>Edukasi Kesehatan Ibu & Anak</h2>
-  <p class="edukasi-subtitle">
-    Temukan berbagai artikel dan tips penting untuk menjaga kesehatan ibu dan anak secara optimal.
-  </p>
-  <div class="edukasi-cards">
-    <div class="edukasi-card">
-      <h3>Gizi Seimbang Anak</h3>
-      <p>Tips memberi nutrisi tepat untuk tumbuh kembang anak usia dini.</p>
-      <a href="/edukasi/gizi" class="btn-edukasi">Baca Selengkapnya</a>
-    </div>
-    <div class="edukasi-card">
-      <h3>Imunisasi Tepat Waktu</h3>
-      <p>Panduan jenis-jenis imunisasi dan waktu pelaksanaannya.</p>
-      <a href="/edukasi/imunisasi" class="btn-edukasi">Pelajari</a>
-    </div>
-    <div class="edukasi-card">
-      <h3>Kesehatan Ibu</h3>
-      <p>Perawatan dan pola hidup sehat bagi ibu hamil dan pasca melahirkan.</p>
-      <a href="/edukasi/ibu" class="btn-edukasi">Lihat Tips</a>
-    </div>
-  </div>
-</section>
-<%- include('partials/footer') %>
-</body>
+    <section class="edukasi-section">
+      <h2>Edukasi & Tips Berkendara</h2>
+      <p class="edukasi-subtitle">
+        Temukan berbagai artikel dan tips penting untuk perjalanan aman, nyaman, dan efisien bersama kendaraan sewa Anda.
+      </p>
+      <div class="edukasi-cards">
+        <div class="edukasi-card">
+          <h3>Perawatan Kendaraan</h3>
+          <p>Panduan perawatan ringan yang bisa Anda lakukan sebelum dan sesudah perjalanan.</p>
+          <a href="/edukasi/perawatan" class="btn-edukasi">Baca Selengkapnya</a>
+        </div>
+        <div class="edukasi-card">
+          <h3>Tips Hemat BBM</h3>
+          <p>Cara berkendara yang efisien untuk menghemat bahan bakar selama perjalanan.</p>
+          <a href="/edukasi/hematbbm" class="btn-edukasi">Pelajari</a>
+        </div>
+        <div class="edukasi-card">
+          <h3>Keamanan di Jalan</h3>
+          <p>Langkah-langkah menjaga keselamatan selama menggunakan kendaraan rental.</p>
+          <a href="/edukasi/keamanan" class="btn-edukasi">Lihat Tips</a>
+        </div>
+      </div>
+    </section>
+    
+    <%- include('partials/footer') %>
+  </body>
 </html>

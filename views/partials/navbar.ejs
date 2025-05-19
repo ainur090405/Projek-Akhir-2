@@ -1,10 +1,10 @@
 <div class="navbar">
   <div class="logo">
     <a href="/">
-      <img src="/images/utama/logo.png" alt="e-Posyandu Logo" />
+      <img src="/images/utama/logo.jpg" alt="Rental Logo" />
     </a>
     <span class="brand-name">
-      <span class="meduro">e-</span><span class="pride">Posyandu</span>
+      <span class="ainur">Meduro</span><span class="pride">Rental</span>
     </span>
   </div>
 
@@ -12,16 +12,15 @@
 
   <div class="nav-links">
     <a href="/">Home</a>
-    <a href="/anak">Data Anak</a>
-    <a href="/ibu">Data Ibu</a>
-    <a href="/imunisasi">Imunisasi</a>
-    <a href="/gizi">Pertumbuhan Gizi</a>
+    <a href="/objek?kategori=mobil">Mobil</a>
+    <a href="/objek?kategori=driver">Driver</a>
+    <a href="/objek?kategori=paket">Paket Sewa</a>
     <% if (session && session.role === 'admin') { %>
       <a href="/master">Master</a>
     <% } %>
 
     <form action="/search" method="GET" class="search-form">
-      <input type="text" name="q" placeholder="Cari data..." required />
+      <input type="text" name="q" placeholder="Cari kendaraan..." required />
       <button type="submit">
         <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
       </button>
