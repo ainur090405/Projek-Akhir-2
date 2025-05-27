@@ -19,7 +19,6 @@ const jadwal_operasional_kendaraanRouter = require('./routes/jadwal_operasional_
 const pemesananRouter = require('./routes/pemesanan');
 const log_aktivitasRouter = require('./routes/log_aktivitas');
 const jadwal_operasionalRouter = require('./routes/jadwal_operasional');
-const pemesanan_userRouter = require('./routes/pemesanan_user');
 
 var app = express();
 
@@ -57,7 +56,6 @@ app.use('/jadwal_operasional_kendaraan', jadwal_operasional_kendaraanRouter);
 app.use('/pemesanan', pemesananRouter);
 app.use('/log_aktivitas', log_aktivitasRouter);
 app.use('/jadwal_operasional', jadwal_operasionalRouter);
-app.use('/pemesanan_user', pemesanan_userRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));
