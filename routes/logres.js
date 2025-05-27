@@ -7,6 +7,7 @@ function isValidEmail(email) {
   const regex = /^[^\s@]+@gmail\.com$/;
   return regex.test(email);
 }
+
 // Middleware untuk admin
 function isAdmin(req, res, next) {
   if (req.session && req.session.isLoggedIn && req.session.role === 'admin') {
@@ -15,6 +16,7 @@ function isAdmin(req, res, next) {
     res.status(403).send('Akses ditolak. Hanya admin yang bisa mengakses halaman ini.');
   }
 }
+
 // GET form register
 router.get('/register', (req, res) => {
   res.render('register', {
@@ -33,7 +35,7 @@ router.post('/register', (req, res) => {
     return res.redirect('/register?error=' + msg);
   }
 
-  // cek email
+  // Cek email
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
     if (err) {
       console.error('Database error:', err);
@@ -46,7 +48,7 @@ router.post('/register', (req, res) => {
       return res.redirect('/register?error=' + msg);
     }
 
-    // user baru
+    // Tambah user baru
     db.query(
       'INSERT INTO users (email, username, password) VALUES (?, ?, ?)',
       [email, username, password],
@@ -64,13 +66,31 @@ router.post('/register', (req, res) => {
   });
 });
 
-// login
+// GET login
 router.get('/login', (req, res) => {
   res.render('login', {
     error: req.query.error || null,
     success: req.query.success || null
   });
 });
+
+// Tambahkan setelah route logout
+router.get('/profile', (req, res) => {
+  if (!req.session.isLoggedIn) {
+    return res.redirect('/login?error=' + encodeURIComponent('Silakan login terlebih dahulu.'));
+  }
+
+  const email = req.session.email || null;
+  const username = req.session.username || null;
+  const role = req.session.role || null;
+
+  res.render('profile', {
+    email,
+    username,
+    role
+  });
+});
+
 
 // POST login
 router.post('/login', (req, res) => {
@@ -85,10 +105,13 @@ router.post('/login', (req, res) => {
         const msg = encodeURIComponent('Terjadi kesalahan server.');
         return res.redirect('/login?error=' + msg);
       }
+
       if (results.length > 0) {
         req.session.isLoggedIn = true;
         req.session.username = results[0].username;
-        req.session.role = results[0].role; 
+        req.session.role = results[0].role;
+        req.session.email = results[0].email; // ✅ Tambahan ini
+
         const msg = encodeURIComponent('Yey, Login berhasil !!');
         res.redirect('/?success=' + msg);
       } else {
@@ -99,6 +122,7 @@ router.post('/login', (req, res) => {
   );
 });
 
+// Logout
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
@@ -107,7 +131,5 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
   });
 });
-
-
 
 module.exports = { router, isAdmin };
