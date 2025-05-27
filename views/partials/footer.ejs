@@ -5,56 +5,64 @@
 <footer class="footer-container">
   <div class="footer-content">
     
+    <!-- Brand -->
     <div class="footer-brand-section">
       <a href="/" class="logo-link">
-        <img src="/images/utama/logo.jpg" alt="Rental Logo" class="footer-logo">
-        <h2 class="footer-brand cinzel-font">MeduroRental</h2>
+        <img src="/images/utama/logo.jpg" alt="eTravel Logo" class="footer-logo">
+        <h2 class="footer-brand cinzel-font">MeduroTravel</h2>
       </a>
-      <p class="footer-desc">Solusi mudah dan cepat untuk kebutuhan sewa mobil Anda. Nyaman, Aman, Terpercaya!</p>
+      <p class="footer-desc">Layanan digital pemesanan kendaraan dinas yang cepat, efisien, dan transparan. Terintegrasi dan mudah digunakan!</p>
     </div>
 
+    <!-- Navigasi -->
     <div class="footer-nav-section">
-      <h3 class="footer-title">Navigasi</h3>
+      <h3 class="footer-title">Menu</h3>
       <ul class="footer-nav">
-        <li><a href="/mobil?kategori=mobil">Mobil</a></li>
-        <li><a href="/mobil?kategori=driver">Driver</a></li>
-        <li><a href="/mobil?kategori=paket">Paket Sewa</a></li>
+    <li><a href="/kendaraan_user">Kendaraan</a></li>
+    <li><a href="/jadwal_operasional">Operasional</a></li>
+    <li><a href="/pesan">Pesan</a></li>
+    <li><a href="/riwayat">Riwayat</a></li>
+    <li><a href="/ulasan">Ulasan</a></li>
+    <li><a href="/notifikasi">Notifikasi</a></li>
+    <li><a href="/profil">Profil Saya</a></li>
+  </ul>
+</nav>
+
       </ul>
     </div>
 
-    <!-- Ikuti Kami -->
+    <!-- Sosial Media -->
     <div class="footer-social-section">
       <h3 class="footer-title">Ikuti Kami</h3>
       <div class="social-icons">
-        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://wa.me" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
 
     <!-- Kontak -->
     <div class="footer-contact-section">
-      <h3 class="footer-title">Hubungi Kami</h3>
-      <p>📍 Jl. Raya Gapura No.21, Sumenep</p>
-      <p>📞 031-789456</p>
-      <p>✉️ cs@MeduroRental.id</p>
+      <h3 class="footer-title">Kontak</h3>
+      <p>📍DISHUB KAB.Sumenep</p>
+      <p>📞 0812-3456-7890</p>
+      <p>✉️ Medurotravel@sumenep.go.id</p>
     </div>
 
   </div>
 
   <div class="footer-bottom">
-    &copy; 2024 MeduroRental. Sewa mobil kini lebih mudah!
+    &copy; 2024 eTravel. Layanan kendaraan dinas berbasis digital.
   </div>
 </footer>
-<!-- CSS -->
 <style>
- .footer-container {
-  background-color: var(--dark-blue);
+  .footer-container {
+  background-color: #2c65aa; /* Biru tua elegan */
   padding: 40px 60px;
   font-family: 'Segoe UI', sans-serif;
-  color: #f3f3f3;
-  border-top: 4px solid #3a6ea5;
+  color: #e5eaf0;
+  border-top: 5px solid #4ba3c7;
 }
 
 .footer-content {
@@ -69,48 +77,46 @@
 .footer-social-section,
 .footer-contact-section {
   flex: 1;
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .logo-link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-decoration: none;
 }
 
 .footer-logo {
-  width: 60px;
-  filter: drop-shadow(0 0 4px #5e9dd5);
+  width: 58px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 4px #7cc9f0);
 }
 
 .footer-brand {
   margin: 0;
-  font-size: 22px;
-  color: #f8f8f8;
-  text-shadow: 1px 1px 2px #c2dbf2;
-}
-
-.cinzel-font {
+  font-size: 24px;
+  color: #ffffff;
   font-family: 'Cinzel', serif;
   font-weight: 700;
+  text-shadow: 1px 1px 2px #5f95ca;
 }
 
 .footer-desc {
-  margin-top: 0;
+  margin-top: 10px;
   font-size: 14px;
-  color: #e1f0fa;
-  max-width: 350px;
-  line-height: 1.4;
+  color: #cfe5f5;
+  max-width: 360px;
+  line-height: 1.5;
 }
 
 .footer-title {
   font-size: 18px;
-  margin-bottom: 10px;
-  color: #ffffff;
-  text-align: center;
+  margin-bottom: 12px;
+  color: #f0f6fc;
   font-weight: 600;
-  letter-spacing: 1px;
+  border-bottom: 2px solid #4ba3c7;
+  padding-bottom: 6px;
   font-family: 'Cinzel', serif;
 }
 
@@ -121,77 +127,57 @@
 }
 
 .footer-nav li {
-  margin-bottom: 8px;
-  text-align: left;
-  margin-left: 100px;
-  position: relative;
-  font-weight: 580;
-  font-family: 'Cinzel', serif;
-  color: #f7f7f7;
-  filter: drop-shadow(0 0 6px #a9d1ff);
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .footer-nav a {
-  color: #fdfdfd;
+  color: #d9ecf8;
   text-decoration: none;
   transition: color 0.3s;
-  font-weight: 600;
 }
 
 .footer-nav a:hover {
-  color: #2a74b7;
+  color: #7dc2e6;
   text-decoration: underline;
 }
 
 .social-icons {
   display: flex;
-  justify-content: center;
-  gap: 22px;
-  font-size: 24px;
-  margin-top: 10px;
+  gap: 16px;
+  font-size: 22px;
+  margin-top: 12px;
 }
 
 .social-icons a {
-  color: #145a8d;
-  transition: color 0.3s, transform 0.3s;
-  font-family: 'Cinzel', serif;
-  filter: drop-shadow(0 0 1px #6da8db);
+  color: #aedbf7;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #e9eaeb;
-  transform: scale(1.25) rotate(-10deg);
-  filter: drop-shadow(0 0 6px #a9d1ff);
+  color: #ffffff;
+  transform: scale(1.2);
 }
 
-/* Ganti icon fontawesome ke versi kuno */
-.social-icons a .fab {
-  font-weight: 900;
-  filter: drop-shadow(0 0 6px #a9d1ff);
-}
-
-/* Kontak */
 .footer-contact-section p {
   margin: 6px 0;
   font-size: 14px;
-  color: #d7e9f9;
-  text-align: left;
-  margin-left: 55px;
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
+  color: #d0e4f6;
+  font-weight: 500;
 }
 
 .footer-bottom {
   text-align: center;
   margin-top: 40px;
-  font-size: 14px;
-  color: #0b3d66;
-  font-weight: 600;
-  font-family: 'Cinzel', serif;
-  text-shadow: 0 0 3px #a3c1e9;
+  font-size: 13px;
+  color: #c8d9ec;
+  font-weight: 500;
+  padding-top: 20px;
+  border-top: 1px solid #4ba3c7;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
@@ -207,15 +193,8 @@
     text-align: center;
   }
 
-  .footer-nav li,
-  .footer-contact-section p {
-    margin-left: 0;
-    text-align: center;
-  }
-
   .logo-link {
     justify-content: center;
   }
 }
-
 </style>

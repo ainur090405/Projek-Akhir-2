@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('/images/utama/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.bg-elegan {
+  background-color: #f3f4f6;
+}
+
+.text-elegan {
+  color: #2c2c2c;
+}
+
+.container.detail-objek {
+  max-width: 850px;
+  margin: 60px auto;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.75); 
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.container.detail-objek:hover {
+  transform: translateY(-3px);
+}
+
+.judul-objek {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.kategori {
+  font-size: 0.95rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.detail-gambar {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-top: 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.detail-deskripsi, .detail-audio {
+  margin-top: 40px;
+}
+
+.detail-deskripsi h2,
+.detail-audio h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+  border-left: 4px solid #d4af37;
+  padding-left: 10px;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+audio {
+  width: 100%;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f9fafb;
+}
+
+.btn-kembali {
+  display: inline-block;
+  margin-top: 30px;
+  background-color: #1094b9;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-kembali:hover {
+  background-color: #2eb39f;
+  transform: scale(1.05);
+}

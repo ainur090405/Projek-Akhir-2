@@ -3,11 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+ font-family: 'Times New Roman', Times, serif;
 }
-
 body {
-    background-color: #e6f2fb; /* biru sangat muda */
+      background-image: url('/images/utama/index.jpg');
+      
 }
 
 .container-fluid {
@@ -18,20 +18,20 @@ body {
 /* Sidebar */
 .sidebar {
   width: 220px;
-  background-color: #0c2e4e; /* biru tua gelap */
-  color: #d1e7dd; /* biru muda pucat untuk teks */
+  background-color: #343a40;
+  color: #fff;
   padding-top: 20px;
   flex-shrink: 0;
 }
 
 .sidebar h4 {
-  color: #aad4f5; /* biru muda */
+  color: #fff;
   margin-bottom: 30px;
   padding-left: 20px;
 }
 
 .sidebar a {
-  color: #a9c9f5; /* biru muda agak terang */
+  color: #adb5bd;
   text-decoration: none;
   display: block;
   padding: 12px 20px;
@@ -39,7 +39,7 @@ body {
 }
 
 .sidebar a:hover {
-  background-color: #265a9e; /* biru medium */
+  background-color: #495057;
   color: #fff;
 }
 
@@ -47,7 +47,6 @@ body {
 .main-content {
   flex-grow: 1;
   padding: 30px;
-  color: #0c2e4e; /* teks biru tua */
 }
 
 /* Alert */
@@ -58,8 +57,8 @@ body {
 }
 
 .alert-success {
-  background-color: #c3e6cb; /* hijau muda (tetap untuk success) */
-  color: #0f5132;
+  background-color: #d1e7dd;
+  color: #519fc2;
 }
 
 .alert-danger {
@@ -80,9 +79,9 @@ body {
 
 /* Card */
 .card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(12, 46, 78, 0.15); /* shadow biru gelap transparan */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 20px;
   transition: transform 0.2s ease-in-out;
 }
@@ -94,12 +93,11 @@ body {
 .card h5 {
   margin-bottom: 10px;
   font-size: 18px;
-  color: #0074cc; /* biru medium */
 }
 
 .card p {
   font-size: 14px;
-  color: #335974; /* biru abu */
+  color: #70b1c6;
 }
 
 .btn {
@@ -107,14 +105,14 @@ body {
   padding: 8px 12px;
   font-size: 14px;
   background-color: transparent;
-  border: 1px solid #0074cc; /* biru medium */
-  color: #0074cc;
+  border: 1px solid #007bff;
+  color: #007bff;
   border-radius: 4px;
   text-decoration: none;
   transition: 0.2s;
 }
 
 .btn:hover {
-  background-color: #005b96; /* biru tua */
+  background-color: #007bff;
   color: white;
 }

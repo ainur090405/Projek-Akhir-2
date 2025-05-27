@@ -8,16 +8,24 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+      <%- include('partials/navbar') %>
 <div class="container-fluid">
   <div class="row">
     <!-- Sidebar -->
     <div class="col-md-3 col-lg-2 sidebar">
       <h4 class="text-white px-3 mb-4"><i class="bi bi-speedometer2"></i> Admin Panel</h4>
-      <a href="/"><i class="bi bi-house"></i> Dashboard</a>
-      <a href="/users"><i class="bi bi-people"></i> Manajemen Pengguna</a>
-      <a href="/kategori"><i class="bi bi-robot"></i>mobil</a>
-      <a href="/alat"><i class="bi bi-basket3"></i> Dan lainnya</a>
-      <a href="/"><i class="bi bi-box-arrow-right"></i> Kembali Ke Halaman</a>
+      <nav>
+  <ul>
+    <li><a href="/users">Kelola Pengguna</a></li>
+    <li><a href="/data_kendaraan">Kelola Kendaraan</a></li>
+    <li><a href="/kategori_kendaraan">Kelola Kategori</a></li>
+    <li><a href="/supir">Kelola Supir</a></li>
+    <li><a href="/jadwal_operasional_kendaraan">Kelola Jadwal</a></li>
+    <li><a href="/pemesanan">Kelola Pemesanan</a></li>
+    <li><a href="/log_aktivitas">Log Aktivitas</a></li>
+    <li><a href="/">Keluar</a></li>
+  </ul>
+</nav>
     </div>
 
     <!-- Konten Utama -->
@@ -48,7 +56,7 @@
               <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-apple"></i><i class="bi bi-robot"></i></i>varian mobil</h5>
                 <p class="card-text">Manajemen mobil.</p>
-                <a href="/kategori" class="btn btn-outline-primary btn-sm">Kelola</a>
+                <a href="/data_kendaraan" class="btn btn-outline-primary btn-sm">Kelola</a>
               </div>
             </div>
           </div>
@@ -56,12 +64,53 @@
           <div class="col-md-6 col-lg-4">
             <div class="card card-hover shadow-sm">
               <div class="card-body">
-                <h5 class="card-title"><i class="bi bi-tools"></i> tambahan</h5>
-                <p class="card-text">tambahan</p>
-                <a href="/ainur" class="btn btn-outline-primary btn-sm">Kelola</a>
+                <h5 class="card-title"><i class="bi bi-tools"></i> kendaraan</h5>
+                <p class="card-text">kategorinya</p>
+                <a href="/kategori_kendaraan" class="btn btn-outline-primary btn-sm">Kelola</a>
               </div>
             </div>
           </div>
+
+              <div class="col-md-6 col-lg-4">
+              <div class="card card-hover shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="bi bi-apple"></i><i class="bi bi-robot"></i></i>supir</h5>
+                  <p class="card-text">Manajemen supir.</p>
+                  <a href="/supir" class="btn btn-outline-primary btn-sm">Kelola</a>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="col-md-6 col-lg-4">
+              <div class="card card-hover shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="bi bi-tools"></i> jadwal</h5>
+                  <p class="card-text">Manajemen jadwal</p>
+                  <a href="/jadwal_operasional_kendaraan" class="btn btn-outline-primary btn-sm">Kelola</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card card-hover shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="bi bi-apple"></i><i class="bi bi-robot"></i></i>pemesanan</h5>
+                  <p class="card-text">Manajemen pesen.</p>
+                  <a href="/pemesanan" class="btn btn-outline-primary btn-sm">Kelola</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card card-hover shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="bi bi-apple"></i><i class="bi bi-robot"></i></i>aktivitas</h5>
+                  <p class="card-text">Manajemen aktivitas.</p>
+                  <a href="/log_aktivitas" class="btn btn-outline-primary btn-sm">Kelola</a>
+                </div>
+              </div>
+            </div>
 
         </div>
       </div>
@@ -69,5 +118,6 @@
 
   </div>
 </div>
-</body>
+  <%- include('partials/footer') %>
+</body>a
 </html>

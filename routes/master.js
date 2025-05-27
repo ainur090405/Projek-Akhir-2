@@ -7,7 +7,7 @@ router.get('/', isAdmin, (req, res) => {
         success: req.query.success || null,
         error: req.query.error || null
         });
-    });
+    }); 
     
 
 

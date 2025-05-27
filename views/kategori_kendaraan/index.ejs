@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Kategori Kendaraan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .table th, .table td {
+      vertical-align: middle;
+    }
+    .table-dark th {
+      background-color: #343a40;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container my-4">
+  <% if (messages.success) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= messages.success %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% } %>
+  <% if (messages.error) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= messages.error %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% } %>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Data Kategori Kendaraan</h2>
+    <a href="/kategori_kendaraan/create" class="btn btn-primary">
+      <i class="bi bi-plus-circle"></i> Tambah Kategori
+    </a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered text-center align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Nama Kategori</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (data.length === 0) { %>
+          <tr>
+            <td colspan="3">Tidak ada data.</td>
+          </tr>
+        <% } else { %>
+          <% data.forEach((k, i) => { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= k.nama_kategori %></td>
+              <td>
+                <a href="/kategori_kendaraan/edit/<%= k.id_kategori %>" class="btn btn-sm btn-warning">
+                  <i class="bi bi-pencil"></i> Edit
+                </a>
+                <a href="/kategori_kendaraan/hapus/<%= k.id_kategori %>" class="btn btn-sm btn-danger"
+                   onclick="return confirm('Yakin ingin menghapus?')">
+                  <i class="bi bi-trash"></i> Hapus
+                </a>
+              </td>
+            </tr>
+          <% }); %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="/master" class="btn btn-secondary mt-3">
+    <i class="bi bi-arrow-left-circle"></i> Kembali
+  </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

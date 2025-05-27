@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log Aktivitas Pengguna</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="mb-4">Log Aktivitas Pengguna</h1>
+
+    <% if (messages.success) { %>
+      <div class="alert alert-success"><%= messages.success %></div>
+    <% } %>
+
+    <a href="/log_aktivitas/create" class="btn btn-primary mb-3">Tambah Log Aktivitas</a>
+
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Aktivitas</th>
+          <th>Waktu</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(log => { %>
+          <tr>
+            <td><%= log.id_log %></td>
+            <td><%= log.username %></td>
+            <td><%= log.aktivitas %></td>
+            <td><%= new Date(log.waktu).toLocaleString() %></td>
+            <td>
+              <a href="/log_aktivitas/edit/<%= log.id_log %>" class="btn btn-sm btn-warning">Edit</a>
+              <a href="/log_aktivitas/hapus/<%= log.id_log %>" class="btn btn-sm btn-danger"
+                 onclick="return confirm('Yakin ingin menghapus log ini?')">Hapus</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <div><a href="/master" class="btn btn-secondary me-2">
+    <i class="bi bi-arrow-left-circle"></i> Kembali</a></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

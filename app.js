@@ -11,8 +11,16 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users')
 var logresRouter = require('./routes/logres').router;
 var masterRouter = require('./routes/master');
-//var mobilRouter = require('./routes/mobil');
-var objekRouter = require('./routes/objek');
+const kendaraanRouter = require('./routes/data_kendaraan');
+const kendaraan_userRouter = require('./routes/kendaraan_user');
+const kategoriKendaraanRouter = require('./routes/kategori_kendaraan');
+const supirRoutes = require('./routes/supir');
+const jadwal_operasional_kendaraanRouter = require('./routes/jadwal_operasional_kendaraan');
+const pemesananRouter = require('./routes/pemesanan');
+const log_aktivitasRouter = require('./routes/log_aktivitas');
+const jadwal_operasionalRouter = require('./routes/jadwal_operasional');
+const pemesanan_userRouter = require('./routes/pemesanan_user');
+
 var app = express();
 
 // view engine setup
@@ -30,7 +38,7 @@ app.use(flash());
 app.use(session({
   secret: 'paainur',       
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
 }));
 app.use((req, res, next) => {
   res.locals.session = req.session;
@@ -41,9 +49,16 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/', logresRouter);
 app.use('/master', masterRouter);
-app.use('/objek', objekRouter);
-//app.use('/data_anak', data_anakRouter);
-// catch 404 and forward to error handler
+app.use('/data_kendaraan', kendaraanRouter);
+app.use('/kendaraan_user', kendaraan_userRouter);
+app.use('/kategori_kendaraan', kategoriKendaraanRouter);
+app.use('/supir', supirRoutes);
+app.use('/jadwal_operasional_kendaraan', jadwal_operasional_kendaraanRouter);
+app.use('/pemesanan', pemesananRouter);
+app.use('/log_aktivitas', log_aktivitasRouter);
+app.use('/jadwal_operasional', jadwal_operasionalRouter);
+app.use('/pemesanan_user', pemesanan_userRouter);
+
 app.use(function(req, res, next) {
   next(createError(404));
 });

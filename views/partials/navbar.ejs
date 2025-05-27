@@ -4,7 +4,7 @@
       <img src="/images/utama/logo.jpg" alt="Rental Logo" />
     </a>
     <span class="brand-name">
-      <span class="ainur">Meduro</span><span class="pride">Rental</span>
+      <span class="ainur">Meduro</span><span class="pride">Travel</span>
     </span>
   </div>
 
@@ -12,25 +12,42 @@
 
   <div class="nav-links">
     <a href="/">Home</a>
-    <a href="/objek?kategori=mobil">Mobil</a>
-    <a href="/objek?kategori=driver">Driver</a>
-    <a href="/objek?kategori=paket">Paket Sewa</a>
+    <a href="/kendaraan_user">Kendaraan</a>
+    <a href="/jadwal_operasional">Operasional</a>
+
+    <!-- Dropdown Pesan -->
+    <div class="dropdown">
+      <a class="dropbtn">Lainnya ▼</a>
+      <div class="dropdown-content">
+        <a href="/pemesanan_user">Pesan</a>
+        <a href="/riwayat">Riwayat</a>
+        <a href="/ulasan">Ulasan</a>
+        <a href="/notifikasi">Notifikasi</a>
+      </div>
+    </div>
+
     <% if (session && session.role === 'admin') { %>
       <a href="/master">Master</a>
     <% } %>
-
-    <form action="/search" method="GET" class="search-form">
-      <input type="text" name="q" placeholder="Cari kendaraan..." required />
-      <button type="submit">
-        <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
-      </button>
-    </form>
   </div>
 
+  <form action="/search" method="GET" class="search-form">
+    <input type="text" name="q" placeholder="Cari kendaraan..." required />
+    <button type="submit">
+      <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
+    </button>
+  </form>
+
   <% if (session && session.isLoggedIn) { %>
-    <div class="auth-section">
-      <span class="username">Hi, <%= session.username %></span>
-      <a href="/logout" class="logout-btn">Logout <img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png" alt="Logout Icon" /></a>
+    <!-- Dropdown user profile -->
+    <div class="auth-section dropdown">
+      <span class="username dropbtn">Hi, <%= session.username %> ▼</span>
+      <div class="dropdown-content">
+        <a href="/profil">Profil Saya</a>
+        <a href="/logout" class="logout-btn">
+          Logout <img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png" alt="Logout Icon" />
+        </a>
+      </div>
     </div>
   <% } else { %>
     <div class="login-link">
@@ -44,15 +61,30 @@
     const nav = document.querySelector('.nav-links');
     nav.classList.toggle('active');
   }
+
+  // Dropdown toggle on mobile for Pesan and user profile
+  document.querySelectorAll('.dropbtn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      if (window.innerWidth <= 769) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('active');
+      }
+    });
+  });
 </script>
 
-<style>:root {
-  --dark-blue: #1a3f6b;
+<style>
+:root {
+  --dark-blue: #2c65aa;
   --primary-blue: #4a90e2;
   --light-blue: #a8c6f7;
   --accent-blue: #6bb1ff;
   --text-light: #e6f0ff;
   --text-muted: #bdd7fb;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .navbar {
@@ -62,7 +94,6 @@
   background-color: var(--dark-blue);
   padding: 14px 28px;
   flex-wrap: wrap;
-  font-family: 'Times New Roman', Times, serif; /* ⬅️ diubah */
   color: var(--text-light);
   box-shadow: 0 4px 10px rgba(26, 63, 107, 0.5);
   border-bottom: 3px solid var(--primary-blue);
@@ -70,10 +101,6 @@
   z-index: 99;
 }
 
-/* OPTIONAL: kamu juga bisa tambahkan ini agar seluruh teks ikut berubah */
-body {
-  font-family: 'Times New Roman', Times, serif;
-}
 .logo {
   display: flex;
   align-items: center;
@@ -90,14 +117,14 @@ body {
   letter-spacing: 0.5px;
 }
 
-.brand-name .meduro {
+.brand-name .ainur {
   color: var(--light-blue);
-  font-family:'Cinzel', serif;
+  font-family: 'Cinzel', serif;
 }
 
 .brand-name .pride {
   color: var(--text-light);
-  font-family:'Cinzel', serif;
+  font-family: 'Cinzel', serif;
 }
 
 .menu-toggle {
@@ -119,20 +146,7 @@ body {
   flex-grow: 1;
 }
 
-.logout-btn {
-  color: var(--text-light);
-  text-decoration: none;
-  background-color: var(--primary-blue);
-  padding: 10px 12px;
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  gap: 8px;
-}
-
-.nav-links a,
-.login-link a {
+.nav-links > a {
   color: var(--text-light);
   text-decoration: none;
   padding: 8px 14px;
@@ -141,11 +155,25 @@ body {
   transition: background-color 0.3s ease, transform 0.2s;
 }
 
-.nav-links a:hover,
-.logout-btn:hover,
-.login-link a:hover {
+.nav-links > a:hover {
   background-color: var(--accent-blue);
   transform: scale(1.05);
+}
+
+.logout-btn {
+  background-color: transparent;
+  padding: 0;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: var(--accent-blue);
 }
 
 .search-form {
@@ -198,6 +226,21 @@ body {
   gap: 8px;
   margin-left: auto;
 }
+
+.login-link a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background-color: var(--primary-blue);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.login-link a:hover {
+  background-color: var(--accent-blue);
+  transform: scale(1.05);
+}
+
 .login-link img,
 .logout-btn img {
   width: 20px;
@@ -209,6 +252,57 @@ body {
   font-weight: bold;
 }
 
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background-color: var(--primary-blue);
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.dropbtn:hover {
+  background-color: var(--accent-blue);
+  transform: scale(1.05);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--primary-blue);
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(26, 63, 107, 0.3);
+  border-radius: 6px;
+  z-index: 100;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.dropdown-content a {
+  color: var(--text-light);
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--accent-blue);
+}
+
+/* Show dropdown on hover for desktop */
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* Responsive */
 @media (max-width: 769px) {
   .menu-toggle {
     display: block;
@@ -230,7 +324,12 @@ body {
     display: flex;
   }
 
-  .nav-links a,
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links > a,
   .search-form,
   .login-link a,
   .logout-btn {
@@ -266,6 +365,32 @@ body {
     width: 32px;
     height: 32px;
   }
-}
 
+  /* Dropdown adjustments on mobile */
+  .dropdown-content {
+    position: relative;
+    background-color: transparent;
+    box-shadow: none;
+    min-width: 100%;
+    margin-top: 0;
+  }
+
+  .dropdown-content a {
+    background-color: var(--primary-blue);
+    margin: 2px 0;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  /* Disable hover on mobile */
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  /* Show dropdown on active class toggle */
+  .dropdown.active .dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>
