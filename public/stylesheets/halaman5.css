@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('/images/utama/index.jpg');
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  color: #343a40;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.table {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.table th {
+  background-color: #0d6efd;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.alert {
+  transition: opacity 0.5s ease;
+  font-size: 0.95rem;
+}
+
+.bi-star-fill, .bi-star {
+  font-size: 1.1rem;
+}
+
+.text-muted {
+  font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+/* Pastikan wrapper mengisi tinggi layar */
+.wrapper {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+/* Isi konten fleksibel, biar dorong footer ke bawah */
+.wrapper .container {
+flex: 1;
+}
+

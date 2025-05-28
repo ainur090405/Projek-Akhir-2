@@ -110,7 +110,8 @@ router.post('/login', (req, res) => {
         req.session.isLoggedIn = true;
         req.session.username = results[0].username;
         req.session.role = results[0].role;
-        req.session.email = results[0].email; // ✅ Tambahan ini
+        req.session.email = results[0].email; 
+        req.session.user = results[0];
 
         const msg = encodeURIComponent('Yey, Login berhasil !!');
         res.redirect('/?success=' + msg);

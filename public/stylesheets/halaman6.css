@@ -1,0 +1,100 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('/images/utama/index.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  color: #343a40;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #0d6efd;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Wrapper agar konten fleksibel dan footer di bawah */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Kontainer utama */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+/* List notifikasi bergaya seperti kartu */
+.list-group {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.list-group-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* Notifikasi belum dibaca */
+.list-group-item-warning {
+  background-color: #fff3cd; /* kuning lembut */
+  font-weight: 600;
+}
+
+/* Hover efek */
+.list-group-item:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+/* Info tambahan kecil */
+.small.text-muted {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* Pesan tidak ada notifikasi */
+.text-muted {
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 40px;
+  display: block;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 15px;
+    max-width: 95%;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  .list-group-item {
+    font-size: 0.9rem;
+  }
+}
