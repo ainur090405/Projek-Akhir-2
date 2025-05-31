@@ -22,7 +22,7 @@ const jadwal_operasionalRouter = require('./routes/jadwal_operasional');
 const edukasiRouter = require('./routes/edukasi');
 const ulasanRouter = require('./routes/ulasan');
 const notifikasiRouter = require('./routes/notifikasi');
-
+const notifikasi_crud = require('./routes/notifikasi_crud');
 var app = express();
 
 // view engine setup
@@ -62,6 +62,7 @@ app.use('/jadwal_operasional', jadwal_operasionalRouter);
 app.use('/edukasi', edukasiRouter)
 app.use('/ulasan', ulasanRouter);
 app.use('/notifikasi', notifikasiRouter);
+app.use('/notifikasi_crud', notifikasi_crud);
 
 app.use(function(req, res, next) {
   next(createError(404));
