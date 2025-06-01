@@ -50,38 +50,7 @@
         <% }) %>
       </div>
     <% } %>
-
-    <!-- Notifikasi -->
-    <h2 class="mt-5 mb-4">Notifikasi Pemesanan</h2>
-
-    <% if (typeof notifikasi === 'undefined' || notifikasi.length === 0) { %>
-      <div class="alert alert-secondary">Tidak ada notifikasi saat ini.</div>
-    <% } else { %>
-      <div class="row">
-        <% notifikasi.forEach(notif => { %>
-          <div class="col-md-6 mb-4">
-            <div class="card shadow-sm <%= notif.status_baca === 'belum' ? 'border-primary bg-light' : '' %>">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <%= notif.jenis === 'pengingat' ? '🔔 Pengingat' : '📩 Status Pemesanan' %>
-                </h5>
-                <p class="card-text"><%= notif.isi_pesan %></p>
-                <p class="card-text">
-                  <small class="text-muted">Dikirim: <%= new Date(notif.waktu_kirim).toLocaleString('id-ID') %></small>
-                </p>
-                <% if (notif.status_baca === 'belum') { %>
-                  <span class="badge bg-warning text-dark">Belum dibaca</span>
-                <% } else { %>
-                  <span class="badge bg-success">Sudah dibaca</span>
-                <% } %>
-              </div>
-            </div>
-          </div>
-        <% }) %>
-      </div>
-    <% } %>
-  </div>
-
+    </div>
   <%- include('partials/footer') %>
 </body>
 </html>

@@ -31,26 +31,14 @@ router.get('/', (req, res) => {
     ORDER BY pk.tanggal DESC
   `;
 
-  const queryNotif = `
-    SELECT * FROM notifikasi_pemesanan
-    WHERE id_user = ?
-    ORDER BY waktu_kirim DESC
-  `;
-
   db.query(queryRiwayat, [idUser], (err, riwayat) => {
     if (err) {
       console.error(err);
-      return res.render('riwayat', { riwayat: [], notifikasi: [] });
+      return res.render('riwayat', { riwayat: [] });
     }
 
-    db.query(queryNotif, [idUser], (err2, notifikasi) => {
-      if (err2) {
-        console.error(err2);
-        return res.render('riwayat', { riwayat: riwayat, notifikasi: [] });
-      }
-
-      res.render('riwayat', { riwayat, notifikasi });
-    });
+    res.render('riwayat', { riwayat });
   });
 });
+
 module.exports = router;
