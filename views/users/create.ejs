@@ -10,13 +10,11 @@
 <div class="d-flex justify-content-center mt-4 mb-4">
   <div class="container py-4 bg-light p-4 rounded" style="max-width: 600px;">
     <h1 class="mb-4 text-center">Tambah Pengguna</h1>
-
     <form action="/users/store" method="post">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input type="text" name="username" id="username" class="form-control" required>
       </div>
-
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" name="email" id="email" class="form-control">
@@ -33,7 +31,6 @@
           <option value="">-- Pilih Role --</option>
           <option value="admin">Admin</option>
           <option value="user">User</option>
-           <option value="user">Supir</option>
         </select>
       </div>
 

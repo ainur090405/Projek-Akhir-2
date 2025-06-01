@@ -24,6 +24,7 @@ const ulasanRouter = require('./routes/ulasan');
 const notifikasiRouter = require('./routes/notifikasi');
 const notifikasi_crudRouter = require('./routes/notifikasi_crud');
 const pesananRouter = require('./routes/pesanan');
+const riwayatRouter = require('./routes/riwayat');
 
 var app = express();
 
@@ -66,6 +67,7 @@ app.use('/ulasan', ulasanRouter);
 app.use('/notifikasi', notifikasiRouter);
 app.use('/notifikasi_crud', notifikasi_crudRouter);
 app.use('/pesanan', pesananRouter);
+app.use('/riwayat', riwayatRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

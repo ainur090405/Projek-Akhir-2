@@ -1,0 +1,61 @@
+/* CSS untuk riwayat.ejs */
+
+body {
+   background-image: url('/images/utama/index.jpg');
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: #212529;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.alert-info {
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+/* Pastikan wrapper mengisi tinggi layar */
+.wrapper {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+/* Isi konten fleksibel, biar dorong footer ke bawah */
+.wrapper .container {
+flex: 1;
+}
