@@ -80,14 +80,32 @@ CREATE TABLE jadwal_operasional_kendaraan (
     FOREIGN KEY (id_kendaraan) REFERENCES data_kendaraan(id_kendaraan)
 );
 
--- Seed data jadwal_operasional_kendaraan
 INSERT INTO jadwal_operasional_kendaraan (id_kendaraan, hari, jam_buka, jam_tutup) VALUES
-(1, 'Senin', '08:00:00', '18:00:00'),
-(1, 'Selasa', '08:00:00', '18:00:00'),
-(2, 'Rabu', '09:00:00', '17:00:00'),
-(3, 'Kamis', '07:00:00', '19:00:00'),
-(4, 'Jumat', '08:00:00', '16:00:00'),
-(5, 'Sabtu', '10:00:00', '20:00:00');
+(1, 'Senin', '07:00:00', '17:00:00'),
+(2, 'Selasa', '07:15:00', '17:15:00'),
+(3, 'Rabu', '07:30:00', '17:30:00'),
+(5, 'Kamis', '07:45:00', '17:45:00'),
+(11, 'Jumat', '08:00:00', '18:00:00'),
+(12, 'Sabtu', '08:15:00', '18:15:00'),
+(13, 'Minggu', '08:30:00', '18:30:00'),
+(14, 'Senin', '08:45:00', '18:45:00'),
+(15, 'Selasa', '09:00:00', '19:00:00'),
+(16, 'Rabu', '09:15:00', '19:15:00'),
+(17, 'Kamis', '09:30:00', '19:30:00'),
+(19, 'Jumat', '09:45:00', '19:45:00'),
+(20, 'Sabtu', '10:00:00', '20:00:00'),
+(21, 'Minggu', '10:15:00', '20:15:00'),
+(22, 'Senin', '10:30:00', '20:30:00'),
+(23, 'Selasa', '10:45:00', '20:45:00'),
+(24, 'Rabu', '11:00:00', '21:00:00'),
+(25, 'Kamis', '11:15:00', '21:15:00'),
+(26, 'Jumat', '11:30:00', '21:30:00'),
+(27, 'Sabtu', '11:45:00', '21:45:00'),
+(28, 'Minggu', '12:00:00', '22:00:00'),
+(29, 'Senin', '12:15:00', '22:15:00'),
+(31, 'Selasa', '12:30:00', '22:30:00'),
+(32, 'Rabu', '12:45:00', '22:45:00');
+
 
 -- Tabel pemesanan_kendaraan
 CREATE TABLE pemesanan_kendaraan (
@@ -109,7 +127,7 @@ CREATE TABLE pemesanan_kendaraan (
 INSERT INTO pemesanan_kendaraan (id_user, id_kendaraan, id_supir, tanggal, waktu_mulai, waktu_selesai, status, keterangan) VALUES
 (2, 1, 1, '2025-05-25', '09:00:00', '15:00:00', 'menunggu', 'Perjalanan ke Bogor'),
 (3, 2, 2, '2025-05-26', '08:00:00', '12:00:00', 'disetujui', 'Meeting luar kota'),
-(2, 3, 3, '2025-05-27', '07:30:00', '17:00:00', 'ditolak', 'Wisata rombongan');
+(2, 3, 3, '2025-05-27', '07:31:00', '17:00:00', 'ditolak', 'Wisata rombongan');
 
 -- Tabel notifikasi_pemesanan
 CREATE TABLE notifikasi_pemesanan (

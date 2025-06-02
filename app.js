@@ -21,8 +21,6 @@ const log_aktivitasRouter = require('./routes/log_aktivitas');
 const jadwal_operasionalRouter = require('./routes/jadwal_operasional');
 const edukasiRouter = require('./routes/edukasi');
 const ulasanRouter = require('./routes/ulasan');
-const notifikasiRouter = require('./routes/notifikasi');
-const notifikasi_crudRouter = require('./routes/notifikasi_crud');
 const pesananRouter = require('./routes/pesanan');
 const riwayatRouter = require('./routes/riwayat');
 
@@ -64,10 +62,9 @@ app.use('/log_aktivitas', log_aktivitasRouter);
 app.use('/jadwal_operasional', jadwal_operasionalRouter);
 app.use('/edukasi', edukasiRouter)
 app.use('/ulasan', ulasanRouter);
-app.use('/notifikasi', notifikasiRouter);
-app.use('/notifikasi_crud', notifikasi_crudRouter);
 app.use('/pesanan', pesananRouter);
 app.use('/riwayat', riwayatRouter);
+
 
 app.use(function(req, res, next) {
   next(createError(404));

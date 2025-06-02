@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="id">
   <head>
+    <meta charset="UTF-8" />
     <title>Register</title>
     <link rel="stylesheet" href="/stylesheets/logres.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <div class="container">
-      <!-- Form pendaftaran -->
-      <div class="form-container animate-in">
-        <h2>Register</h2>
-
-        <% if (success) { %>
-          <div class="success"><%= success %></div>
-        <% } %>
-
-        <% if (error) { %>
-          <div class="alert"><%= error %></div>
-        <% } %>
-
+    <div class="container" id="container">
+      <div class="form-container sign-up animate-in">
         <form action="/register" method="POST">
+          <h2>Register</h2>
+
+          <% if (success) { %>
+            <div class="success"><%= success %></div>
+          <% } %>
+          <% if (error) { %>
+            <div class="alert"><%= error %></div>
+          <% } %>
+
           <div class="input-group">
             <label for="email">Email</label>
             <input
@@ -56,22 +56,19 @@
           </div>
 
           <button type="submit">Daftar</button>
+          <p>Sudah punya akun? <a href="/login">Login</a></p>
         </form>
-
-        <p>Sudah punya akun? <a href="/login">Login</a></p>
       </div>
 
       <div class="toggle-container">
         <div class="glow-box">
           <h1 id="typing-text"></h1>
-          <p id="fade-text">Silakan daftar untuk mengetahui dan menjelajahi hal baru ! 🎉 </p>
-          <div class="animated-border">
-            </div>
-          </div>
-        </div>
+          <p id="fade-text">Silakan daftar untuk menjelajahi hal baru! 🎉</p>
+          <div class="animated-border"></div>
         </div>
       </div>
     </div>
+
     <script src="/javascripts/logres.js"></script>
   </body>
 </html>

@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/db');
+const db = require('../config/db'); // mysql biasa
 
-// Fungsi validasi email
+// Validasi email hanya @gmail.com
 function isValidEmail(email) {
   const regex = /^[^\s@]+@gmail\.com$/;
   return regex.test(email);
 }
 
-// Middleware untuk admin
+// Middleware admin
 function isAdmin(req, res, next) {
   if (req.session && req.session.isLoggedIn && req.session.role === 'admin') {
     next();
@@ -17,7 +17,8 @@ function isAdmin(req, res, next) {
   }
 }
 
-// GET form register
+// ==============================
+// GET: Register
 router.get('/register', (req, res) => {
   res.render('register', {
     error: req.query.error || null,
@@ -25,48 +26,41 @@ router.get('/register', (req, res) => {
   });
 });
 
-// POST register
+// POST: Register
 router.post('/register', (req, res) => {
   const { email, username, password } = req.body;
 
-  // Validasi format email
   if (!isValidEmail(email)) {
-    const msg = encodeURIComponent('Format email harus valid!!');
-    return res.redirect('/register?error=' + msg);
+    return res.redirect('/register?error=' + encodeURIComponent('Format email harus @gmail.com!!'));
   }
 
-  // Cek email
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
     if (err) {
-      console.error('Database error:', err);
-      const msg = encodeURIComponent('Terjadi kesalahan server.');
-      return res.redirect('/register?error=' + msg);
+      console.error('DB error:', err);
+      return res.redirect('/register?error=' + encodeURIComponent('Terjadi kesalahan server.'));
     }
 
     if (results.length > 0) {
-      const msg = encodeURIComponent('Email sudah digunakan.');
-      return res.redirect('/register?error=' + msg);
+      return res.redirect('/register?error=' + encodeURIComponent('Email sudah digunakan.'));
     }
 
-    // Tambah user baru
     db.query(
       'INSERT INTO users (email, username, password) VALUES (?, ?, ?)',
       [email, username, password],
       (err2) => {
         if (err2) {
           console.error('Insert error:', err2);
-          const msg = encodeURIComponent('Gagal membuat akun.');
-          return res.redirect('/register?error=' + msg);
+          return res.redirect('/register?error=' + encodeURIComponent('Gagal membuat akun.'));
         }
 
-        const msg = encodeURIComponent('Akun berhasil dibuat. Silakan login.');
-        res.redirect('/login?success=' + msg);
+        res.redirect('/login?success=' + encodeURIComponent('Akun berhasil dibuat! Silakan login.'));
       }
     );
   });
 });
 
-// GET login
+// ==============================
+// GET: Login
 router.get('/login', (req, res) => {
   res.render('login', {
     error: req.query.error || null,
@@ -74,25 +68,7 @@ router.get('/login', (req, res) => {
   });
 });
 
-// Tambahkan setelah route logout
-router.get('/profile', (req, res) => {
-  if (!req.session.isLoggedIn) {
-    return res.redirect('/login?error=' + encodeURIComponent('Silakan login terlebih dahulu.'));
-  }
-
-  const email = req.session.email || null;
-  const username = req.session.username || null;
-  const role = req.session.role || null;
-
-  res.render('profile', {
-    email,
-    username,
-    role
-  });
-});
-
-
-// POST login
+// POST: Login
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -102,32 +78,82 @@ router.post('/login', (req, res) => {
     (err, results) => {
       if (err) {
         console.error('Login error:', err);
-        const msg = encodeURIComponent('Terjadi kesalahan server.');
-        return res.redirect('/login?error=' + msg);
+        return res.redirect('/login?error=' + encodeURIComponent('Terjadi kesalahan server.'));
       }
 
       if (results.length > 0) {
+        const user = results[0];
         req.session.isLoggedIn = true;
-        req.session.username = results[0].username;
-        req.session.role = results[0].role;
-        req.session.email = results[0].email; 
-        req.session.user = results[0];
+        req.session.userId = user.id;
+        req.session.username = user.username;
+        req.session.email = user.email;
+        req.session.role = user.role;
+        req.session.user = user;
 
-        const msg = encodeURIComponent('Yey, Login berhasil !!');
-        res.redirect('/?success=' + msg);
+        res.redirect('/?success=' + encodeURIComponent('Yey, Login berhasil!!'));
       } else {
-        const msg = encodeURIComponent('Email atau password salah.');
-        return res.redirect('/login?error=' + msg);
+        res.redirect('/login?error=' + encodeURIComponent('Email atau password salah.'));
       }
     }
   );
 });
 
-// Logout
+// ==============================
+// GET: Profile
+router.get('/profile', (req, res) => {
+  if (!req.session.isLoggedIn) {
+    return res.redirect('/login?error=' + encodeURIComponent('Silakan login dulu ya!'));
+  }
+
+  const userId = req.session.userId;
+
+  db.query('SELECT username, email, password FROM users WHERE id = ?', [userId], (err, userRows) => {
+    if (err) {
+      console.error('User query error:', err);
+      return res.status(500).send('Gagal ambil data user.');
+    }
+
+    db.query(`
+      SELECT u.rating, u.komentar, u.tanggal, k.nama_kendaraan
+      FROM ulasan_kendaraan u
+      JOIN data_kendaraan k ON u.id_kendaraan = k.id_kendaraan
+      WHERE u.id_user = ?
+    `, [userId], (err2, ulasanRows) => {
+      if (err2) {
+        console.error('Ulasan query error:', err2);
+        return res.status(500).send('Gagal ambil ulasan.');
+      }
+
+      db.query(`
+        SELECT p.tanggal, p.waktu_mulai, p.waktu_selesai, p.status, 
+               k.nama_kendaraan, s.nama_supir
+        FROM pemesanan_kendaraan p
+        JOIN data_kendaraan k ON p.id_kendaraan = k.id_kendaraan
+        JOIN data_supir s ON p.id_supir = s.id_supir
+        WHERE p.id_user = ?
+        ORDER BY p.tanggal DESC
+      `, [userId], (err3, pemesananRows) => {
+        if (err3) {
+          console.error('Pemesanan query error:', err3);
+          return res.status(500).send('Gagal ambil data pemesanan.');
+        }
+
+        res.render('profile', {
+          user: userRows[0],
+          ulasan: ulasanRows,
+          pemesanan: pemesananRows
+        });
+      });
+    });
+  });
+});
+
+// ==============================
+// GET: Logout
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
-      console.log('Error destroying session:', err);
+      console.error('Logout error:', err);
     }
     res.redirect('/');
   });
